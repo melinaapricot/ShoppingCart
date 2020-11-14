@@ -1,0 +1,31 @@
+
+.header {
+  display: flex;
+  flex-flow: row wrap;
+  height: 60px;
+  background-color: lavender;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.logo {
+  margin-left: 50px;
+  text-decoration: none;
+}
+
+.header-right {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 50px;
+}
+
+
+.nav-item {
+  margin-right: 60px;
+  margin-left: 30px;
+  text-decoration: none;
+  font-family:
+}
