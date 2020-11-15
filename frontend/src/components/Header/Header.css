@@ -3,7 +3,7 @@
   display: flex;
   flex-flow: row wrap;
   height: 60px;
-  background-color: lavender;
+  background-color: #F6DAE3;
   justify-content: space-between;
   align-items: center;
 
@@ -27,5 +27,9 @@
   margin-right: 60px;
   margin-left: 30px;
   text-decoration: none;
-  font-family:
+
+}
+
+a {
+  color: black;
 }

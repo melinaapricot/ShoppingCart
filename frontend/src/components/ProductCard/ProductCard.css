@@ -1,0 +1,21 @@
+.product-card {
+  border: black 1px solid ;
+  border-radius: 5px;
+  height: 300px;
+  width: 200px;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-end;
+  align-content: center;
+  padding:0 10px 20px;
+  margin: 20px;
+}
+.card-button {
+  background-color: palevioletred;
+  border: none;
+  color: white;
+  height: 40px;
+  width: 110px;
+  align-self: center;
+}
+
