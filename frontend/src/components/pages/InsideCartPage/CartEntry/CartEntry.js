@@ -36,7 +36,6 @@ function CartEntry(props) {
                 const newOrder = addCartEntry(props.order, entry);
                 props.onOrderDataChanged(newOrder);
             });
-
     }
 }
     export default CartEntry
