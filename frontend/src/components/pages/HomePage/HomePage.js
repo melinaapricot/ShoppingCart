@@ -9,14 +9,14 @@ function HomePage(props) {
     useEffect(fetchProductsFromBackend, []);
 
     return (
-        <div className="main">
+        <div className="homepage">
             <Header order={props.order}/>
-            <main>
-                <section className="main-top">
+            <main className="homepage__main">
+                <section >
                     <h1>Welcome</h1>
                 </section>
-                <section className="product-section">
-                    {products.map(p => <ProductCard key={p.id} product={p}/>)}
+                <section className="homepage__products">
+                    {products.map(p => <ProductCard key={p.id} product={p} order={props.order} onOrderDataChanged={props.onOrderDataChanged} />)}
                 </section>
             </main>
             <Footer/>
@@ -26,7 +26,7 @@ function HomePage(props) {
 
     /// EVENTS
     function fetchProductsFromBackend() {
-        fetch("http://localhost:8081/api/products/", {mode: "cors"})
+        fetch("http://localhost:8081/api/products/", {mode: "cors", credentials: 'include'})
             .then(resp => resp.json())
             .then(pr => setProducts(pr))
             .catch(e => window.alert("Oopsie, I could not connect to server"));
