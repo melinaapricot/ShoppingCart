@@ -1,0 +1,24 @@
+.inside-cart-page__main {
+    max-width: 700px;
+    margin: 40px auto;
+
+}
+
+.inside-cart-page__entries {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(3, auto);
+    justify-content: space-between;
+    border: 2px solid red;
+}
+
+.inside-cart-page__span {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.inside-cart-page__results {
+    margin-top: 24px;
+    text-align: right;
+    font-size: 24px;
+}

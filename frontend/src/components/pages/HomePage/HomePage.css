@@ -1,4 +1,4 @@
-.product-section {
+.homepage__products {
   display: flex;
   flex-flow: row wrap;
   justify-content:  space-around;
