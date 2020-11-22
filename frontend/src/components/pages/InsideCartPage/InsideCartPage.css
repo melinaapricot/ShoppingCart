@@ -1,7 +1,8 @@
 .inside-cart-page__main {
     max-width: 700px;
-    margin: 40px auto;
-
+    min-height: calc(100vh - 187px);
+    margin: 0 auto;
+    padding: 40px 0;
 }
 
 .inside-cart-page__entries {

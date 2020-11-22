@@ -3,3 +3,7 @@
   flex-flow: row wrap;
   justify-content:  space-around;
 }
+
+.homepage__main {
+  min-height: 100vh;
+}
