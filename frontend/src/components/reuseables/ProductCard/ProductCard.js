@@ -1,16 +1,18 @@
 import React from "react"
 import "./ProductCard.css"
 import addCartEntry from "../../../usecases/addCartEntry";
+import Price from "../Price/Price";
 
 function ProductCard(props) {
     return (
         <div className="product-card">
-            <img className="product-image" src="#" alt="Actually we have no product picture this is just a test."/>
-            <div className="product-info">
-                <h3 className="product-name">{props.product.name}</h3>
-                <p className="price">{(props.product.price / 100).toFixed(2)} €</p>
-            </div>
-            <button className="card-button" onClick={addToCart}>
+            <img className="product-card__image" src="https://images.pexels.com/photos/4908011/pexels-photo-4908011.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Actually we have no product picture this is just a test."/>
+            <b className="product-card__name">{props.product.name}</b>
+            <Price cents={props.product.price} />
+            <button className="product-card__more-info" onClick={() => props.onShowMore && props.onShowMore(props.product.id)}>
+            Show more
+            </button>
+            <button className="product-card__buy-button" onClick={addToCart}>
                 Add to cart
             </button>
         </div>

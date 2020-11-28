@@ -2,15 +2,24 @@
   border: black 1px solid ;
   border-radius: 5px;
   height: 300px;
-  width: 200px;
+  width: 260px;
   display: flex;
-  flex-flow: column wrap;
+  flex-direction: column;
   justify-content: flex-end;
-  align-content: center;
-  padding:0 10px 20px;
+  align-items: center;
+  padding: 20px;
   margin: 20px;
 }
-.card-button {
+
+.product-card__image {
+  height: 120px;
+}
+
+.product-card__name {
+  margin: 12px 0 8px;
+}
+
+.product-card__buy-button {
   background-color: palevioletred;
   border: none;
   color: white;
@@ -19,3 +28,11 @@
   align-self: center;
 }
 
+.product-card__more-info {
+  background: none;
+  cursor: pointer;
+  border: none;
+  margin: 8px 0 16px;
+  text-decoration: underline;
+  color: #4b4b4b;
+}

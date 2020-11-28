@@ -7,13 +7,15 @@ import Price from "../../reuseables/Price/Price";
 
 function InsideCartPage(props) {
     return (
-        <div className="inside-cart-page">
+        <>
             <Header order={props.order}/>
             <main className="inside-cart-page__main">
                 <section className="inside-cart-page__entries">
-                    <span className="inside-cart-page__span">Product</span>
+                    <span className="inside-cart-page__span inside-cart-page__product-span">Product</span>
                     <span className="inside-cart-page__span">Quantity</span>
                     <span className="inside-cart-page__span">Price</span>
+                    <span className="inside-cart-page__span">Actions</span>
+
                     {props.order.entries.map(entry => <CartEntry key={entry.productId} entry={entry} order={props.order} onOrderDataChanged={props.onOrderDataChanged}/>)}
                 </section>
                 <section className="inside-cart-page__results">
@@ -21,7 +23,7 @@ function InsideCartPage(props) {
                 </section>
             </main>
             <Footer/>
-        </div>
+        </>
     )
 }
 

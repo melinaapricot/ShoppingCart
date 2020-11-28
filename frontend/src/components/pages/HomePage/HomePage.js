@@ -3,24 +3,31 @@ import "./HomePage.css"
 import ProductCard from "../../reuseables/ProductCard/ProductCard"
 import Header from "../../reuseables/Header/Header";
 import Footer from "../../reuseables/Footer/Footer";
+import ProductInfo from "../../reuseables/ProductInfo/ProductInfo";
 
 function HomePage(props) {
     const [products, setProducts] = useState([]);
     useEffect(fetchProductsFromBackend, []);
 
     return (
-        <div className="homepage">
+        <>
             <Header order={props.order}/>
             <main className="homepage__main">
                 <section >
                     <h1>Welcome</h1>
                 </section>
                 <section className="homepage__products">
-                    {products.map(p => <ProductCard key={p.id} product={p} order={props.order} onOrderDataChanged={props.onOrderDataChanged} />)}
+                    {products.map(p => <ProductCard
+                        key={p.id}
+                        product={p}
+                        order={props.order}
+                        onShowMore={productId => props.onShowPopup(<ProductInfo productId={productId}/>)}
+                        onOrderDataChanged={props.onOrderDataChanged} />)
+                    }
                 </section>
             </main>
             <Footer/>
-        </div>
+        </>
     );
 
 

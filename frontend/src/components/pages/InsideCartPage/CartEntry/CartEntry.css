@@ -1,3 +1,33 @@
+.cart-entry__name{
+    justify-self: left;
+}
 
+.cart-entry__amount-btns{
+    width: 30px;
+    height: 30px;
+    background-color: #E1E8EE;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+}
 
+.cart-entry__input{
+    margin: 0 15px;
+}
 
+.cart-entry__delete-btn{
+    display: inline-block;
+    Cursor: pointer;
+    width: 30px;
+    height: 30px;
+    background-color: #E1E8EE;
+    border-radius: 6px;
+    border: none;
+}
+
+.cart-entry__price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 100px;
+}

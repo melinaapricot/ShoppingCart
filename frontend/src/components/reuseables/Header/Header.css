@@ -5,6 +5,10 @@
     background-color: #F6DAE3;
     justify-content: space-between;
     align-items: center;
+
+    position: sticky;
+    top: 0;
+    left: 0;
 }
 
 .header__logo {

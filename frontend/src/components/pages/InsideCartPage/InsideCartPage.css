@@ -8,14 +8,30 @@
 .inside-cart-page__entries {
     display: grid;
     grid-gap: 10px;
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: repeat(4, auto);
     justify-content: space-between;
-    border: 2px solid red;
+    align-items: center;
+    justify-items: center;
+    padding: 8px;
+}
+
+.cart-entry__form {
+    display: inline-block;
+}
+
+.cart-entry__input{
+    min-width: 0;
+    width: 48px;
+    text-align: center;
 }
 
 .inside-cart-page__span {
     font-size: 20px;
     font-weight: bold;
+}
+
+.inside-cart-page__product-span{
+    justify-self: left;
 }
 
 .inside-cart-page__results {
