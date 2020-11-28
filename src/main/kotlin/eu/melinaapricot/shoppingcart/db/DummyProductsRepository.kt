@@ -17,12 +17,12 @@ class DummyProductsRepository : ProductsRepository {
 
     init {
         val data = listOf(
-                ProductData(UUID.randomUUID(), "Kroketes", 500),
-                ProductData(UUID.randomUUID(), "Seeb", 300),
-                ProductData(UUID.randomUUID(), "NEAKI!", 90),
-                ProductData(UUID.randomUUID(), "Krasaki!", 700),
-                ProductData(UUID.randomUUID(), "Cockatiel Harness", 7000),
-                ProductData(UUID.randomUUID(), "Makaoniaaaa", 150)
+                ProductData(UUID.randomUUID(), "Kroketes", 500, "Poly nostimes ke taganes koketes"),
+                ProductData(UUID.randomUUID(), "Seeb", 300, "Grains, rice, and many more!"),
+                ProductData(UUID.randomUUID(), "NEAKI!", 90, "PIIIIII-iiii!!"),
+                ProductData(UUID.randomUUID(), "Krasaki!", 700, "Gia methismenes gatoules kai poulakia"),
+                ProductData(UUID.randomUUID(), "Cockatiel Harness", 7000, "Gia na phgainoun voltoules ta mikra papagalakia. Mikres voltoules kai megales voltoules. Prosoxh stous kofteosauous!"),
+                ProductData(UUID.randomUUID(), "Makaoniaaaa", 150, "Food = Makaonia")
         )
 
         data.forEach { this.data[it.id] = it }

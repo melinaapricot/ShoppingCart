@@ -17,8 +17,8 @@ import java.util.*
 class UpdateOrderUseCaseTest {
     /// CONFIG
     companion object {
-        private val PRODUCT1 = ProductData(UUID.randomUUID()!!, "product 1", 50)
-        private val PRODUCT2 = ProductData(UUID.randomUUID()!!, "product 2", 70)
+        private val PRODUCT1 = ProductData(UUID.randomUUID()!!, "product 1", 50, "Description 1")
+        private val PRODUCT2 = ProductData(UUID.randomUUID()!!, "product 2", 70, "Description 2")
         private val NOT_EXISTING_ID = UUID.randomUUID()!!
     }
 
