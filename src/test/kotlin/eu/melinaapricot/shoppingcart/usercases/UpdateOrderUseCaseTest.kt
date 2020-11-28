@@ -5,6 +5,7 @@ import eu.melinaapricot.shoppingcart.model.CartEntry
 import eu.melinaapricot.shoppingcart.model.CartUpdateData
 import eu.melinaapricot.shoppingcart.model.ProductData
 import eu.melinaapricot.shoppingcart.model.ShopOrder
+import eu.melinaapricot.shoppingcart.model.error.ShopException
 import eu.melinaapricot.shoppingcart.testutils.any
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
@@ -30,7 +31,7 @@ class UpdateOrderUseCaseTest {
         val change = CartUpdateData(NOT_EXISTING_ID, 1, null)
 
         assertThatThrownBy { UpdateOrderUseCase(order, change, repo).run() }
-                .isExactlyInstanceOf(RuntimeException::class.java)
+                .isExactlyInstanceOf(ShopException::class.java)
                 .hasMessage("Product not found")
     }
 
@@ -41,7 +42,7 @@ class UpdateOrderUseCaseTest {
         val change = CartUpdateData(PRODUCT1.id, null, null)
 
         assertThatThrownBy { UpdateOrderUseCase(order, change, repo).run() }
-                .isExactlyInstanceOf(RuntimeException::class.java)
+                .isExactlyInstanceOf(ShopException::class.java)
                 .hasMessage("setTimes or addTimes must be present, but both were null")
     }
 
@@ -138,7 +139,7 @@ class UpdateOrderUseCaseTest {
         val result = mock(ProductsRepository::class.java)
         val products = listOf(PRODUCT1, PRODUCT2)
 
-        doThrow(RuntimeException("Product not found")).`when`(result).requireById(any(UUID::class.java))
+        doThrow(ShopException("Product not found")).`when`(result).requireById(any(UUID::class.java))
         products.forEach { doReturn(it).`when`(result).requireById(it.id) }
 
         return result

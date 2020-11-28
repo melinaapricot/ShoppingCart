@@ -5,7 +5,7 @@ import eu.melinaapricot.shoppingcart.model.CartEntry
 import eu.melinaapricot.shoppingcart.model.CartUpdateData
 import eu.melinaapricot.shoppingcart.model.ProductData
 import eu.melinaapricot.shoppingcart.model.ShopOrder
-import java.lang.RuntimeException
+import eu.melinaapricot.shoppingcart.model.error.ShopException
 
 class UpdateOrderUseCase(private val order: ShopOrder, private val change: CartUpdateData, private val productsRepo: ProductsRepository) {
     fun run(): CartEntry {
@@ -24,7 +24,7 @@ class UpdateOrderUseCase(private val order: ShopOrder, private val change: CartU
         if (this.change.setTimes != null) return this.change.setTimes
         else if (this.change.addTimes != null) return currentAmount + this.change.addTimes
 
-        throw RuntimeException("setTimes or addTimes must be present, but both were null")
+        throw ShopException("setTimes or addTimes must be present, but both were null")
     }
 
     private fun getOrCreateCartEntry(product: ProductData): CartEntry {

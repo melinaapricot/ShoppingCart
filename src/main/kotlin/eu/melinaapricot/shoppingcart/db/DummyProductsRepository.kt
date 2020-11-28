@@ -1,7 +1,7 @@
 package eu.melinaapricot.shoppingcart.db
 
 import eu.melinaapricot.shoppingcart.model.ProductData
-import java.lang.RuntimeException
+import eu.melinaapricot.shoppingcart.model.error.ShopException
 import java.util.*
 import java.util.concurrent.ConcurrentHashMap
 
@@ -33,7 +33,8 @@ class DummyProductsRepository : ProductsRepository {
     }
 
     override fun requireById(id: UUID): ProductData {
-        return this.findById(id) ?: throw RuntimeException("Product with id $id not found")
+        return this.findById(id)
+                ?: throw ShopException("Product with id $id not found").set("id", id)
     }
 
     override fun findAll(): Collection<ProductData> {
