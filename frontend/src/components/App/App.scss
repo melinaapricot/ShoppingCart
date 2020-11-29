@@ -1,3 +1,6 @@
+@import "../../css/colors.scss";
+
+
 .app__overlay {
     position: fixed;
     top: 0;
@@ -13,7 +16,7 @@
 
 .app__popup {
     background-color: white;
-    border: green 4px solid;
+    border: $pop-color 4px solid;
     border-radius: 10px;
     max-width: 80vw;
     max-height: 80vh;

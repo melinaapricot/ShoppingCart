@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import "./ProductInfo.css";
+import "./ProductInfo.scss";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default function ProductInfo(props) {
@@ -25,26 +25,17 @@ export default function ProductInfo(props) {
                 Hello from product info. You selected {props.productId}
                 <p className="product-info__desc">Description</p>
                 <div>{productData == null? "Description is loading": productData.description}</div>
-                <button className="product-info__addtocart-btn">Add to Cart
-                </button>
+                <button className="product-info__addtocart-btn">Add to Cart</button>
             </div>
         </div>
     );
 
 
     function fetchProductData() {
-        // TODO ask the server to give you the data for product with id props.productId.
-        //  temporarily, we will pretend that the server responded with the following data:
-        const dummyProductData = {
-            id:"93154519-55b5-446b-8d74-601cac227aa8",
-            name: "Seeb",
-            price:300,
-            description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+        fetch("http://localhost:8081/api/products/" + props.productId, {mode: "cors", credentials: 'include'})
+            .then(resp => resp.json())
+            .then(realData => setProductData(realData));
 
-            // add whatever info you would like to get.
-        };
-
-        // TODO we will pretend that the server sends the data and the response arrives after 2 seconds.
-        setTimeout(() => setProductData(dummyProductData), 2000);
     }
 }
+

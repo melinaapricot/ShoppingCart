@@ -3,7 +3,7 @@ import HomePage from "../pages/HomePage/HomePage.js";
 import OrderData from "../../model/OrderData";
 import {library} from "@fortawesome/fontawesome-svg-core";
 import {faShoppingCart} from "@fortawesome/free-solid-svg-icons";
-import "./App.css";
+import "./App.scss";
 import InsideCartPage from "../pages/InsideCartPage/InsideCartPage";
 
 library.add(faShoppingCart)

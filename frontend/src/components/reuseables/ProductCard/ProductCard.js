@@ -1,5 +1,5 @@
 import React from "react"
-import "./ProductCard.css"
+import "./ProductCard.scss"
 import addCartEntry from "../../../usecases/addCartEntry";
 import Price from "../Price/Price";
 

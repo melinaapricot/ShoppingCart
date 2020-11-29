@@ -40,15 +40,12 @@
     font-weight: bold;
     margin-top: 30px;
     transition-duration: 0.4s;
-}
 
-.product-info__addtocart-btn:hover {
-    background: white;
-    border: 1px solid black;
-    color: black;
-}
+    &:hover {
+        background: white;
+        border: 1px solid black;
+        color: black;
+    }
 
-.product-info__addtocart-btn:active {
-    transform: translateY(4px);
-
+    &:active { transform: translateY(4px); }
 }
