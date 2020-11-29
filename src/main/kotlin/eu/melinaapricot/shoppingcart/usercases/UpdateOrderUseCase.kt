@@ -31,7 +31,7 @@ class UpdateOrderUseCase(private val order: ShopOrder, private val change: CartU
         val existingEntry = this.order.getEntry(this.change.productId)
         if (existingEntry != null) return existingEntry
 
-        val newEntry = CartEntry(product.id, 0, product.price, product.name)
+        val newEntry = CartEntry(product.id, 0, product.price, product.name, product.mainImage)
         this.order.entries.add(newEntry)
         return newEntry
     }

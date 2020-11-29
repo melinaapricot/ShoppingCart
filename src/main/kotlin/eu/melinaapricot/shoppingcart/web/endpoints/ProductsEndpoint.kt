@@ -13,6 +13,7 @@ private class ShortProductModel(product: ProductData) {
     val id = product.id
     val name = product.name
     val price = product.price
+    val mainImage = product.mainImage
 }
 
 private class DetailedProductModel(product: ProductData) {
@@ -20,6 +21,7 @@ private class DetailedProductModel(product: ProductData) {
     val name = product.name
     val price = product.price
     val description = product.description
+    val mainImage = product.mainImage
 }
 
 fun setupProductRoutes(app: Application, productsRepo: ProductsRepository) {

@@ -17,8 +17,8 @@ import java.util.*
 class UpdateOrderUseCaseTest {
     /// CONFIG
     companion object {
-        private val PRODUCT1 = ProductData(UUID.randomUUID()!!, "product 1", 50, "Description 1")
-        private val PRODUCT2 = ProductData(UUID.randomUUID()!!, "product 2", 70, "Description 2")
+        private val PRODUCT1 = ProductData(UUID.randomUUID()!!, "product 1", 50, "Description 1", "img1")
+        private val PRODUCT2 = ProductData(UUID.randomUUID()!!, "product 2", 70, "Description 2", "img2")
         private val NOT_EXISTING_ID = UUID.randomUUID()!!
     }
 
@@ -67,7 +67,7 @@ class UpdateOrderUseCaseTest {
         val order = ShopOrder()
         val change = CartUpdateData(PRODUCT2.id, null, 77)
 
-        order.entries.add(CartEntry(PRODUCT2.id, 3, PRODUCT2.price, PRODUCT2.name))
+        order.entries.add(CartEntry(PRODUCT2.id, 3, PRODUCT2.price, PRODUCT2.name, PRODUCT2.mainImage))
         val result = UpdateOrderUseCase(order, change, repo).run()
 
         assertThat(result.productId).isEqualTo(PRODUCT2.id)
@@ -83,7 +83,7 @@ class UpdateOrderUseCaseTest {
         val order = ShopOrder()
         val change = CartUpdateData(PRODUCT2.id, 77, null)
 
-        order.entries.add(CartEntry(PRODUCT2.id, 3, PRODUCT2.price, PRODUCT2.name))
+        order.entries.add(CartEntry(PRODUCT2.id, 3, PRODUCT2.price, PRODUCT2.name, PRODUCT2.mainImage))
         val result = UpdateOrderUseCase(order, change, repo).run()
 
         assertThat(result.productId).isEqualTo(PRODUCT2.id)
@@ -99,8 +99,8 @@ class UpdateOrderUseCaseTest {
         val order = ShopOrder()
         val change = CartUpdateData(PRODUCT2.id, null, -1)
 
-        val entry1 = CartEntry(PRODUCT1.id, 1, PRODUCT1.price, PRODUCT1.name)
-        val entry2 = CartEntry(PRODUCT2.id, 3, PRODUCT2.price, PRODUCT2.name)
+        val entry1 = CartEntry(PRODUCT1.id, 1, PRODUCT1.price, PRODUCT1.name, PRODUCT1.mainImage)
+        val entry2 = CartEntry(PRODUCT2.id, 3, PRODUCT2.price, PRODUCT2.name, PRODUCT2.mainImage)
         order.entries.add(entry1)
         order.entries.add(entry2)
 
@@ -119,8 +119,8 @@ class UpdateOrderUseCaseTest {
         val order = ShopOrder()
         val change = CartUpdateData(PRODUCT2.id, -3, null)
 
-        val entry1 = CartEntry(PRODUCT1.id, 1, PRODUCT1.price, PRODUCT1.name)
-        val entry2 = CartEntry(PRODUCT2.id, 3, PRODUCT2.price, PRODUCT2.name)
+        val entry1 = CartEntry(PRODUCT1.id, 1, PRODUCT1.price, PRODUCT1.name, PRODUCT1.mainImage)
+        val entry2 = CartEntry(PRODUCT2.id, 3, PRODUCT2.price, PRODUCT2.name, PRODUCT2.mainImage)
         order.entries.add(entry1)
         order.entries.add(entry2)
 

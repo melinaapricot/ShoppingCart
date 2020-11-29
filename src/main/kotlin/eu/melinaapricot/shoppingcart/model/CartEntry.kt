@@ -6,5 +6,6 @@ class CartEntry(
         val productId: UUID,
         var times: Int,
         val price: Int,
-        val productName: String
+        val productName: String,
+        val mainImage: String,
 )
