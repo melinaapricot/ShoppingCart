@@ -81,6 +81,12 @@ class DummyProductsRepository : ProductsRepository {
     override fun findBySearchTerm(searchTerm: String): Collection<ProductData> {
         return this.data
                 .values
-                .filter{ it.name.contains(searchTerm, ignoreCase = true) }
+                .filter{ this.matches(it, searchTerm) }
+    }
+
+
+    private fun matches(product: ProductData, searchTerm: String) : Boolean {
+        return product.name.contains(searchTerm, ignoreCase = true) ||
+                product.description.contains(searchTerm, ignoreCase = true)
     }
 }

@@ -17,6 +17,11 @@ private class ShortProductModel(product: ProductData) {
     val mainImage = product.mainImage
 }
 
+private class SearchProductModel(product: ProductData) {
+    val id = product.id
+    val name = product.name
+}
+
 private class DetailedProductModel(product: ProductData) {
     val id = product.id
     val name = product.name
@@ -39,7 +44,7 @@ fun setupProductRoutes(app: Application, productsRepo: ProductsRepository) {
 
         get("/api/products/search") {
             val searchTerm = call.request.queryParameters["s"] ?: throw IllegalArgumentException("s is required")
-            val result = productsRepo.findBySearchTerm(searchTerm)
+            val result = productsRepo.findBySearchTerm(searchTerm).map{ SearchProductModel(it) }
             call.respond(result)
         }
     }
