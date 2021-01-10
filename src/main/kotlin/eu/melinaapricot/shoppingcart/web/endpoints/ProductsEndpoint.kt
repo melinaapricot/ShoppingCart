@@ -7,6 +7,7 @@ import io.ktor.application.call
 import io.ktor.response.respond
 import io.ktor.routing.get
 import io.ktor.routing.routing
+import java.lang.IllegalArgumentException
 import java.util.*
 
 private class ShortProductModel(product: ProductData) {
@@ -27,13 +28,19 @@ private class DetailedProductModel(product: ProductData) {
 fun setupProductRoutes(app: Application, productsRepo: ProductsRepository) {
     app.routing {
         get("/api/products") {
-            call.respond(productsRepo.findAll().map{ ShortProductModel(it) })
+            call.respond(productsRepo.findAll())
         }
 
         get("/api/products/{id}") {
             val id = UUID.fromString(call.parameters["id"])
             val product = productsRepo.requireById(id)
             call.respond(DetailedProductModel(product))
+        }
+
+        get("/api/products/search") {
+            val searchTerm = call.request.queryParameters["s"] ?: throw IllegalArgumentException("s is required")
+            val result = productsRepo.findBySearchTerm(searchTerm)
+            call.respond(result)
         }
     }
 }

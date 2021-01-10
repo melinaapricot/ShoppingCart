@@ -10,6 +10,7 @@ interface ProductsRepository {
     fun requireById(id: UUID): ProductData
 
     fun findAll(): Collection<ProductData>
+    fun findBySearchTerm(searchTerm: String): Collection<ProductData>
 }
 
 class DummyProductsRepository : ProductsRepository {
@@ -77,4 +78,9 @@ class DummyProductsRepository : ProductsRepository {
         return this.data.values
     }
 
+    override fun findBySearchTerm(searchTerm: String): Collection<ProductData> {
+        return this.data
+                .values
+                .filter{ it.name.contains(searchTerm, ignoreCase = true) }
+    }
 }
