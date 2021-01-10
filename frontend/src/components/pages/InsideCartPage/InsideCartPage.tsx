@@ -1,5 +1,5 @@
 import React from "react"
-import "./InsideCartPage.css"
+import "./InsideCartPage.scss"
 import Header from "../../reuseables/Header/Header";
 import Footer from "../../reuseables/Footer/Footer";
 import CartEntryView from "./CartEntry/CartEntryView";

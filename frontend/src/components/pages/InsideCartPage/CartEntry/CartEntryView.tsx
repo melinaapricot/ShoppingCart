@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react"
-import "./CartEntry.scss"
+import "./CartEntryView.scss"
 import Price from "../../../reuseables/Price/Price";
 import addCartEntry from "../../../../usecases/addCartEntry";
-import {addToOrder} from "../../../../http";
+import {addToOrder} from "../../../../http/ProductsRequests";
 import CartEntry from "../../../../model/CartEntry";
 import OrderData from "../../../../model/OrderData";
 
@@ -53,7 +53,6 @@ function CartEntryView(props: Props) {
     function addToCart(amountToAdd: number, amountToSet: number) {
         addToOrder(props.entry.productId, amountToAdd, amountToSet)
             .then(entry => {
-                // existing order: props.order
                 const newOrder = addCartEntry(props.order, entry);
                 props.onOrderDataChanged(newOrder);
             });
