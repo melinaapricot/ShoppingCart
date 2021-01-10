@@ -1,11 +1,20 @@
 import React, {useEffect, useState} from "react"
-import "./CartEntry.css"
+import "./CartEntry.scss"
 import Price from "../../../reuseables/Price/Price";
 import addCartEntry from "../../../../usecases/addCartEntry";
+import {addToOrder} from "../../../../http";
+import CartEntry from "../../../../model/CartEntry";
+import OrderData from "../../../../model/OrderData";
 
-function CartEntry(props) {
-    const [amount, setAmount] = useState(props.entry.times);
-    useEffect(() => setAmount(props.entry.times), [props.entry])
+interface Props{
+    entry: CartEntry;
+    order: OrderData;
+    onOrderDataChanged(data: OrderData) : void;
+}
+
+function CartEntryView(props: Props) {
+    const [amount, setAmount] = useState(props.entry.times + "");
+    useEffect(() => setAmount(props.entry.times + ""), [props.entry])
 
     return <>
         <div className="cart-entry__name cart-entry__part">
@@ -34,24 +43,15 @@ function CartEntry(props) {
         if (asNumber === props.entry.times) {
             console.log("Nothing has changed")
         } else if (isNaN(asNumber) || asNumber < 0) {
-            setAmount(props.entry.times)
+            setAmount(props.entry.times + "")
         } else {
             addToCart(null, asNumber)
         }
     }
 
 
-    function addToCart(amountToAdd, amountToSet) {
-        const request = {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({productId: props.entry.productId, addTimes: amountToAdd, setTimes: amountToSet}),
-            credentials: 'include',
-            mode: "cors"
-        };
-
-        fetch("http://localhost:8081/api/shopping-cart/add", request)
-            .then(response => response.json())
+    function addToCart(amountToAdd: number, amountToSet: number) {
+        addToOrder(props.entry.productId, amountToAdd, amountToSet)
             .then(entry => {
                 // existing order: props.order
                 const newOrder = addCartEntry(props.order, entry);
@@ -60,4 +60,4 @@ function CartEntry(props) {
     }
 }
 
-export default CartEntry
+export default CartEntryView;

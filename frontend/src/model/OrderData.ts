@@ -1,5 +1,11 @@
+import CartEntry from "./CartEntry";
+
 export default class OrderData {
-    constructor(cartEntries) {
+    readonly entries: CartEntry[];
+    readonly totalPrice: number;
+    readonly itemCount: number;
+
+    constructor(cartEntries: CartEntry[]) {
         this.entries = cartEntries;
         this.totalPrice = 0
         this.itemCount = 0;

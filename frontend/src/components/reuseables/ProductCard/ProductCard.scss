@@ -1,18 +1,15 @@
 .product-card {
-  border: black 1px solid ;
-  border-radius: 5px;
   height: 300px;
   width: 260px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  padding: 20px;
   margin: 20px;
 }
 
 .product-card__image {
-  height: 120px;
+  height: 200px;
 }
 
 .product-card__name {
@@ -23,9 +20,8 @@
   background-color: palevioletred;
   border: none;
   color: white;
-  height: 40px;
-  width: 110px;
   align-self: center;
+  padding-top: 20;
 }
 
 .product-card__more-info {

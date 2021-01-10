@@ -1,16 +1,20 @@
-import React, {useEffect, useState} from "react";
-import HomePage from "../pages/HomePage/HomePage.js";
+import React, {ReactElement, useEffect, useState} from "react";
+import HomePage from "../pages/HomePage/HomePage";
 import OrderData from "../../model/OrderData";
 import {library} from "@fortawesome/fontawesome-svg-core";
-import {faShoppingCart} from "@fortawesome/free-solid-svg-icons";
+import {faShoppingCart, faSpinner, faSearch} from "@fortawesome/free-solid-svg-icons";
 import "./App.scss";
 import InsideCartPage from "../pages/InsideCartPage/InsideCartPage";
+import {fetchOrder} from "../../http/ProductsRequests";
+
 
 library.add(faShoppingCart)
+library.add(faSpinner)
+library.add(faSearch)
 
 function App() {
     const [order, setOrder] = useState(() => new OrderData([]));
-    const [popup, setPopup] = useState(null);
+    const [popup, setPopup] = useState(null as ReactElement);
     useEffect(fetchOrderData, []);
 
     return <>
@@ -18,7 +22,7 @@ function App() {
         {renderPopup()}
     </>;
 
-    function renderPage() {
+    function renderPage() : ReactElement {
         switch (window.location.pathname.toLowerCase()) {
             case "/hello": return <div>Hello everybody</div>;
             case "/cart": return <InsideCartPage order={order} onOrderDataChanged={newOrder => setOrder(newOrder)}/>;
@@ -28,7 +32,7 @@ function App() {
         }
     }
 
-    function renderPopup() {
+    function renderPopup() : ReactElement {
         if (!popup) return null;
 
         return <div className="app__overlay" onClick={() => setPopup(null)}>
@@ -39,9 +43,7 @@ function App() {
     }
 
     function fetchOrderData() {
-        // implement the real thing here, then delete the setupDummyData BS.
-        fetch("http://localhost:8081/api/shopping-cart", {mode: "cors", credentials: 'include'})
-            .then(resp => resp.json())
+        fetchOrder()
             .then(entries => setOrder(new OrderData(entries)))
             .catch(() => console.error("Could not fetch order data"));
     }

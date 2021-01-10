@@ -1,9 +1,13 @@
 import React from "react"
-import "./Header.css"
+import "./Header.scss"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import OrderData from "../../../model/OrderData";
 
+interface Props{
+    order: OrderData;
+}
 
-function Header(props) {
+function Header(props: Props) {
     return (
         <header className="header">
             <a href="#" className="header__logo">CompanyLogo</a>
