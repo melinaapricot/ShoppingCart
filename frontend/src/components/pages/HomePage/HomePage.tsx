@@ -8,6 +8,7 @@ import {fetchProducts} from "../../../http/ProductsRequests";
 import OrderData from "../../../model/OrderData";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
+
 interface Props{
     order: OrderData;
     onShowPopup(content: ReactElement) : void;
@@ -30,7 +31,7 @@ function HomePage(props: Props) {
                 </section>
                 <section className="homepage__middle">
                     <div className="homepage__search-bar">
-                        <input type="text" placeholder="Search"></input>
+                        <input type="text" placeholder="Search" />
                         <button type="submit"><FontAwesomeIcon icon="search" className="homepage__search-icon"/></button>
                     </div>
                    <div className="homepage__products">
